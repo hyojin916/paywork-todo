@@ -1,11 +1,11 @@
-import React from "react";
-import Todo from "./pages/Todo";
+import React from 'react';
+import Todo from './pages/Todo';
 
-const App= () => {
+const App = () => {
   return (
-    <div>
+    <>
       <Todo />
-    </div>
+    </>
   );
 };
 
