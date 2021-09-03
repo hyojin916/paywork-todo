@@ -1,18 +1,24 @@
 import React from 'react';
 import styled from 'styled-components';
+import { TodoType } from '../../utils/types';
 
-const Item = () => {
+interface paramProps {
+  // children: React.ReactNode;
+  item: TodoType;
+  onFinish: (id: number) => void;
+}
+
+const TodoItem: React.FC<paramProps> = ({ item, onFinish }) => {
   return (
     <ItemBox>
-      <Check></Check>
-      <TodoName>Todo 완료</TodoName>
+      <TodoName onClick={() => onFinish}>{item}</TodoName>
       <div>⭐️</div>
       <DeletBtn value="delet">🗑</DeletBtn>
     </ItemBox>
   );
 };
 
-export default Item;
+export default TodoItem;
 
 const ItemBox = styled.div`
   display: flex;

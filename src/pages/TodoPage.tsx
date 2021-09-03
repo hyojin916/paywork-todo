@@ -1,21 +1,18 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 import styled from 'styled-components';
-import AddTodo from '../components/addTodo/AddTodo';
 import Header from '../components/header/Header';
-import AllList from '../components/list/AllList';
+import TodosContainer from '../components/list/TodosContainer';
 
-const Todo: React.FC = () => {
+const TodoPage: React.FC = () => {
   return (
     <Template>
       <Header />
-      <AllList />
-      <AddTodo />
+      <TodosContainer />
     </Template>
   );
 };
 
-export default Todo;
+export default TodoPage;
 
 const Template = styled.div`
   margin: auto;

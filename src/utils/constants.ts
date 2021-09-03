@@ -1,1 +1,2 @@
-export const STORAGE_KEY: string = 'toDos';
+export {};
+// export const STORAGE_KEY: string = 'toDos';

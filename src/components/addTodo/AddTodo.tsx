@@ -1,51 +1,33 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import { TodoType } from '../../utils/types';
-import { getLocalStorage, setTodoId } from '../../utils/localStorage';
+import { TodoType } from '../../store/reducers/todos';
 
-const AddTodo: React.FC = () => {
-  const [todoList, setTodoList] = useState<TodoType[]>([]);
-  const [inputText, setInputText] = useState<string>('');
+interface paramProps {
+  todo: TodoType[];
+  onCreate: (content: string) => void;
+}
 
-  useEffect(() => {
-    const todos = getLocalStorage();
-    setTodoList(todos);
-  }, []);
+const AddTodo: React.FC<paramProps> = ({ todo, onCreate }) => {
+  const [text, setText] = useState<string>('');
 
-  const getInputText: React.ChangeEventHandler<HTMLInputElement> = (
+  const getText: React.ChangeEventHandler<HTMLInputElement> = (
     e: React.ChangeEvent<HTMLInputElement>,
   ): void => {
     const inputValue = e.target.value;
-    setInputText(inputValue);
+    setText(inputValue);
   };
 
   const submitTodo: React.FormEventHandler<HTMLFormElement> = (
     e: React.FormEvent<HTMLFormElement>,
   ): void => {
     e.preventDefault();
-
-    // dispatch로 작동하도록 바꾸기
-    const _id = setTodoId();
-
-    const newTodo = {
-      id: _id,
-      content: inputText,
-      isCheck: false,
-      createAt: 20210902,
-    };
-
-    setInputText('');
+    onCreate(text);
+    setText('');
   };
 
   return (
     <InputBox onSubmit={submitTodo} action="addTodo">
-      <Input
-        required
-        onChange={getInputText}
-        value={inputText}
-        type="text"
-        placeholder="작업 추가"
-      />
+      <Input value={text} onChange={getText} type="text" placeholder="작업 추가" required />
       <Submit type="submit">Add</Submit>
     </InputBox>
   );

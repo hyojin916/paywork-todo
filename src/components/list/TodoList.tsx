@@ -1,19 +1,29 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-import Item from './Item';
+import { TodoType } from '../../store/reducers/todos';
+// import FinishedList from './FinishedList';
+import TodoItem from './TodoItem';
 
-const TodoList: React.FC = () => {
+interface paramProps {
+  // children: React.ReactNode;
+  todo: TodoType[];
+
+  onFinish: (id: number) => void;
+}
+
+const TodoList: React.FC<paramProps> = ({ todo, onFinish }) => {
   return (
-    <Todos>
-      {/* map 돌려서 Item 나오게 */}
-      <Item />
-      <Item />
-    </Todos>
+    <Todo>
+      {todo.map(item => (
+        <TodoItem key={item.id} item={item} onFinish={onFinish} />
+      ))}
+      {/* <FinishedList /> */}
+    </Todo>
   );
 };
 
 export default TodoList;
 
-const Todos = styled.div`
+const Todo = styled.ul`
   margin-bottom: 30px;
 `;
