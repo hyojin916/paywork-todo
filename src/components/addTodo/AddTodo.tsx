@@ -7,7 +7,7 @@ interface paramProps {
   onCreate: (content: string) => void;
 }
 
-const AddTodo: React.FC<paramProps> = ({ todo, onCreate }) => {
+const AddTodo: React.FC<paramProps> = ({ onCreate }) => {
   const [text, setText] = useState<string>('');
 
   const getText: React.ChangeEventHandler<HTMLInputElement> = (

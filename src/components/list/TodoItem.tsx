@@ -3,17 +3,20 @@ import styled from 'styled-components';
 import { TodoType } from '../../utils/types';
 
 interface paramProps {
-  // children: React.ReactNode;
   item: TodoType;
   onFinish: (id: number) => void;
+  onDelet: (id: number) => void;
 }
 
-const TodoItem: React.FC<paramProps> = ({ item, onFinish }) => {
+const TodoItem: React.FC<paramProps> = ({ item, onFinish, onDelet }: paramProps) => {
   return (
     <ItemBox>
-      <TodoName onClick={() => onFinish}>{item}</TodoName>
-      <div>⭐️</div>
-      <DeletBtn value="delet">🗑</DeletBtn>
+      <TodoName>{item.content}</TodoName>
+      <div onClick={() => onFinish(item.id)}>완료</div>
+      <button>⭐️</button>
+      <DeletBtn onClick={() => onDelet(item.id)} value="delet">
+        🗑
+      </DeletBtn>
     </ItemBox>
   );
 };
@@ -28,14 +31,6 @@ const ItemBox = styled.div`
   font-size: 25px;
   background-color: white;
   border-radius: 8px;
-`;
-
-const Check = styled.div`
-  width: 25px;
-  height: 25px;
-  background-color: navy;
-  border-radius: 50%;
-  margin: 0px 10px;
 `;
 
 const TodoName = styled.div`

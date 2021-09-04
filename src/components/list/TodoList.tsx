@@ -1,21 +1,19 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { TodoType } from '../../store/reducers/todos';
-// import FinishedList from './FinishedList';
 import TodoItem from './TodoItem';
 
 interface paramProps {
-  // children: React.ReactNode;
   todo: TodoType[];
-
+  onDelet: (id: number) => void;
   onFinish: (id: number) => void;
 }
 
-const TodoList: React.FC<paramProps> = ({ todo, onFinish }) => {
+const TodoList: React.FC<paramProps> = ({ todo, onFinish, onDelet }) => {
   return (
     <Todo>
-      {todo.map(item => (
-        <TodoItem key={item.id} item={item} onFinish={onFinish} />
+      {todo.map((item: TodoType) => (
+        <TodoItem key={item.id} item={item} onFinish={onFinish} onDelet={onDelet} />
       ))}
       {/* <FinishedList /> */}
     </Todo>
