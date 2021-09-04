@@ -1,10 +1,9 @@
-import React from 'react';
-import Todo from './pages/Todo';
+import TodoPage from './pages/TodoPage';
 
 const App = () => {
   return (
     <>
-      <Todo />
+      <TodoPage />
     </>
   );
 };
