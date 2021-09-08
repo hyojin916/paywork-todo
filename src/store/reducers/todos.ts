@@ -1,4 +1,4 @@
-import { ADD, FINISHED, DELET } from '../actions/types';
+import { ADD, FINISHED, DELET, GET } from '../actions/types';
 
 export interface TodoType {
   id: number;
@@ -7,20 +7,14 @@ export interface TodoType {
   createAt: number;
 }
 
-// 타입 틀리지말자 진짜ㅡㅡ
-const initialState: TodoType[] = [
-  // {
-  //   id: 1,
-  //   content: '',
-  //   isCheck: false,
-  //   createAt: 0,
-  // },
-];
+const initialState: TodoType[] = [];
 
 export default function todos(state = initialState, action: any) {
   switch (action.type) {
+    case GET:
+      return [...state];
     case ADD:
-      return state.concat(action.todo);
+      return [...state, action.todo];
     case FINISHED:
       return state.map(todo =>
         todo.id === action.id ? { ...todo, isCheck: !todo.isCheck } : todo,

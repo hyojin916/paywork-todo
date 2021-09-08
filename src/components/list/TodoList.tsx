@@ -15,7 +15,6 @@ const TodoList: React.FC<paramProps> = ({ todo, onFinish, onDelet }) => {
       {todo.map((item: TodoType) => (
         <TodoItem key={item.id} item={item} onFinish={onFinish} onDelet={onDelet} />
       ))}
-      {/* <FinishedList /> */}
     </Todo>
   );
 };
