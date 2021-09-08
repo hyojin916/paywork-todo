@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { TodoType } from '../../utils/types';
 
@@ -9,10 +9,16 @@ interface paramProps {
 }
 
 const TodoItem: React.FC<paramProps> = ({ item, onFinish, onDelet }: paramProps) => {
+  const [finish, setFinish] = useState<boolean>(false);
+
+  const isChecked = (): void => {
+    onFinish(item.id);
+    setFinish(!finish);
+  };
+
   return (
     <ItemBox>
       <TodoName>{item.content}</TodoName>
-      <div onClick={() => onFinish(item.id)}>완료</div>
       <button>⭐️</button>
       <DeletBtn onClick={() => onDelet(item.id)} value="delet">
         🗑
@@ -26,20 +32,22 @@ export default TodoItem;
 const ItemBox = styled.div`
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
-  padding: 10px;
-  font-size: 25px;
+  margin: auto;
+  margin-bottom: 2px;
+  padding: 10px 5px;
+  width: 500px;
+  height: 53px;
+  font-size: 19px;
   background-color: white;
-  border-radius: 8px;
+  border-radius: 5px;
 `;
 
 const TodoName = styled.div`
-  padding-right: 300px;
+  width: 75%;
   margin-right: 10px;
+  margin-left: 4px;
 `;
 
 const DeletBtn = styled.button`
-  background: none;
   border: none;
-  padding: 0px 20px;
 `;

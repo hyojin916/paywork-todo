@@ -17,18 +17,18 @@ const TodosContainer: React.FC = () => {
   const onDelet = useCallback((id: number) => dispatch(deletTodo(id)), [dispatch]);
 
   return (
-    <>
-      <ListWrapper>
-        <TodoList todo={todos} onFinish={onFinish} onDelet={onDelet} />
-        <AddTodo todo={todos} onCreate={onCreate} />
-      </ListWrapper>
-    </>
+    <ListWrapper>
+      <AddTodo todo={todos} onCreate={onCreate} />
+      <TodoList todo={todos} onFinish={onFinish} onDelet={onDelet} />
+    </ListWrapper>
   );
 };
 
 export default TodosContainer;
 
 const ListWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   font-size: 20px;
-  background-color: #ffffff94;
 `;

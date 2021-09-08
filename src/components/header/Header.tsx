@@ -9,5 +9,5 @@ export default Header;
 
 const Head = styled.div`
   font-size: 40px;
-  margin-bottom: 30px;
+  margin: 30px 0;
 `;

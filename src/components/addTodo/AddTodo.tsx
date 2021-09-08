@@ -28,7 +28,7 @@ const AddTodo: React.FC<paramProps> = ({ onCreate }) => {
   return (
     <InputBox onSubmit={submitTodo} action="addTodo">
       <Input value={text} onChange={getText} type="text" placeholder="작업 추가" required />
-      <Submit type="submit">Add</Submit>
+      <Submit type="submit">+</Submit>
     </InputBox>
   );
 };
@@ -36,22 +36,36 @@ const AddTodo: React.FC<paramProps> = ({ onCreate }) => {
 export default AddTodo;
 
 const InputBox = styled.form`
-  display: flex;
-  margin-top: 50px;
-  background-color: #00000028;
+  width: 500px;
+  padding: 10px;
+  position: relative;
+  background-color: #000000ab;
+  border-radius: 4px;
 `;
 
 const Input = styled.input`
-  width: 450px;
-  height: 55px;
   border-radius: 5px;
+  width: 100%;
   outline: none;
   font-size: 20px;
-  padding-left: 30px;
-  margin-right: 20px;
+  padding-left: 35px;
+  padding-top: 4px;
+  background: none;
+  border: none;
+  &::placeholder {
+    color: white;
+    font-size: 17px;
+  }
+  &:focus {
+    color: white;
+  }
 `;
 
 const Submit = styled.button`
-  width: auto;
-  text-align: center;
+  position: absolute;
+  top: 7px;
+  left: 10px;
+  border: none;
+  background: none;
+  font-size: 30px;
 `;
